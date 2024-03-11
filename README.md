@@ -32,11 +32,11 @@ The following flags are supported:
 
 ### `-c`, `--compressed`
 
-Extract the `mxfile` source from a compressed `.drawio` file.
+Extract the `mxfile` source from a compressed `.drawio` XML file.
 
 ### `-u`, `--uncompressed`
 
-Extract the `mxfile` source from an uncompressed `.drawio` file.
+Extract the `mxfile` source from an uncompressed `.drawio` XML file.
 
 ### `-s`, `--svg`
 
