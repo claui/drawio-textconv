@@ -1,0 +1,55 @@
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:output method="xml" indent="yes"/>
+
+	<xsl:template match="mxGraphModel">
+		<xsl:copy>
+			<xsl:for-each select="@grid"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@gridSize"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@guides"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@tooltips"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@connect"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@arrows"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@fold"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@page"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@pageScale"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@pageWidth"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@pageHeight"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@background"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@math"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@shadow"><xsl:copy/></xsl:for-each>
+			<xsl:apply-templates select="*|text()" />
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="mxCell">
+		<xsl:copy>
+			<xsl:for-each select="@edge"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@id"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@parent"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@style"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@target"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@vertex"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@*"><xsl:copy/></xsl:for-each>
+			<xsl:apply-templates select="*|text()" />
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="mxPoint">
+		<xsl:copy>
+			<xsl:for-each select="@as"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@x"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@y"><xsl:copy/></xsl:for-each>
+			<xsl:for-each select="@*"><xsl:copy/></xsl:for-each>
+			<xsl:apply-templates select="*|text()" />
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="*">
+		<xsl:copy>
+			<xsl:for-each select="@*">
+				<xsl:copy />
+			</xsl:for-each>
+			<xsl:apply-templates select="*|text()" />
+		</xsl:copy>
+	</xsl:template>
+</xsl:stylesheet>

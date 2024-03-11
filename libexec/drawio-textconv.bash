@@ -1,3 +1,4 @@
+source libexec/constants.bash
 source libexec/options.bash
 source libexec/xml.bash
 source libexec/zip.bash
@@ -11,7 +12,7 @@ function __drawio_textconv {
     file='-'
   fi
 
-  post_processor=~/.local/share/stylesheets/git-textconv-drawio-mxfile-min.xml
+  post_processor="${__PROJECT_ROOT}/${__POST_PROCESSOR}"
 
   if [[ ! -e "${post_processor}" ]]; then
     echo >&2 "Error: File ${post_processor} not found"
