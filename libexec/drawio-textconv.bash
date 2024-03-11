@@ -1,4 +1,5 @@
 source libexec/options.bash
+source libexec/xml.bash
 
 function __drawio_textconv {
   local file option
@@ -18,7 +19,7 @@ function __drawio_textconv {
 
   if [[ "${option}" == 'compressed' ]]; then
     # shellcheck disable=SC2016
-    sed -e '/^<!DOCTYPE/d' "${file}" \
+    strip_doctype "${file}" \
       | xmllint --xpath '/mxfile/diagram/text()' - \
       | base64 --decode \
       | bash -c 'cat <(
@@ -28,15 +29,15 @@ function __drawio_textconv {
       | ruby -rcgi -pe '$_ = CGI::unescape($_)' \
       | xsltproc "${post_processor}" || true
   elif [[ "${option}" == 'uncompressed' ]]; then
-    sed -e '/^<!DOCTYPE/d' "${file}" \
-      | if [ "$(xmllint --xpath '/mxfile/diagram/text()' "${file}" | head -c 1)" ]; then
+    strip_doctype "${file}" \
+      | if [[ "$(xmllint --xpath '/mxfile/diagram/text()' "${file}" | head -c 1)" ]]; then
         echo >&2 'drawio textconv: unable to decode unknown binary diagram format'; exit 1;
       else
         xsltproc "${post_processor}" - || true
       fi
   elif [[ "${option}" == 'svg' ]]; then
     # shellcheck disable=SC2016
-    sed -e '/^<!DOCTYPE/d' "${file}" \
+    strip_doctype "${file}" \
       | xmllint --xpath 'string(/*/@content)' - \
       | xmllint --xpath '/mxfile/diagram/text()' - \
       | base64 --decode \
