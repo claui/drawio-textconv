@@ -1,3 +1,5 @@
+source libexec/version.bash
+
 function parse_options {
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -12,6 +14,10 @@ function parse_options {
       -s|--svg)
         _set_option 'svg'
         shift
+        ;;
+      -V|--version)
+        echo >&2 "${BASENAME} v${__VERSION}"
+        exit 0
         ;;
       -)
         _set_file "${1}"
