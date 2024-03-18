@@ -1,0 +1,32 @@
+Bullseye (and by extension, Byzantium) doesn’t provide the
+`python3-myst-parser` package.
+As a workaround, invoke `pandoc` directly in `override_dh_auto_build`.
+
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,5 +6,6 @@
+ /debian/drawio-textconv.*.debhelper
+ /debian/drawio-textconv.substvars
+ /debian/tmp/
++/debian/*.rst
+ /.pc/
+ *.log
+--- a/doc/sphinx/conf.py
++++ b/doc/sphinx/conf.py
+@@ -14,7 +14,6 @@
+ # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+ 
+ extensions = [
+-    'myst_parser',
+     'sphinx.ext.autodoc',
+     'sphinx.ext.napoleon',
+ ]
+--- a/doc/sphinx/index.rst
++++ b/doc/sphinx/index.rst
+@@ -5,5 +5,4 @@
+    :maxdepth: 2
+    :caption: Contents:
+ 
+-.. include:: ../../USAGE.md
+-   :parser: myst_parser.sphinx_
++.. include:: ../../debian/USAGE.rst
