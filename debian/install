@@ -1,0 +1,9 @@
+#!/usr/bin/dh-exec
+
+# Library files and internal binstubs
+bin/* usr/share/drawio-textconv/bin/
+libexec/* usr/share/drawio-textconv/libexec/
+share/* usr/share/drawio-textconv/share/
+
+# External binstubs
+debian/local/binstub => usr/bin/drawio-textconv
