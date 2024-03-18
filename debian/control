@@ -1,0 +1,23 @@
+Source: drawio-textconv
+Section: vcs
+Priority: optional
+Maintainer: Claudia Pellegrino <clau@tiqua.de>
+Build-Depends: debhelper-compat (= 13), dh-exec, python3-myst-parser, python3-sphinx
+Standards-Version: 4.5.1
+Homepage: https://github.com/claui/drawio-textconv
+Vcs-Browser: https://github.com/claui/drawio-textconv
+Vcs-Git: https://github.com/claui/drawio-textconv.git
+Rules-Requires-Root: no
+
+Package: drawio-textconv
+Architecture: all
+Depends: ${misc:Depends}, libxml2, xsltproc, ruby
+Description: Git textconv helper to extract draw.io sources from .drawio.svg
+ This tool extracts diagram source code, also known as mxfiles, from
+ `.drawio` files (compressed and uncompressed) and from `.drawio.svg`
+ files (where the diagram source is embedded).
+ .
+ Usually, you don’t run this tool directly but use it in combination
+ with Git’s `textconv` facility. This gives you meaningful diff
+ output, especially if you regularly check draw.io diagrams into Git
+ with sources embedded.

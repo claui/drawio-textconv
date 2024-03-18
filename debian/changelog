@@ -1,0 +1,6 @@
+drawio-textconv (0.1.1) UNRELEASED; urgency=medium
+
+  * Initial release
+  * Rename package due to PyPI’s naming restrictions
+
+ -- Claudia Pellegrino <clau@tiqua.de>  Mon, 18 Mar 2024 09:14:30 +0100

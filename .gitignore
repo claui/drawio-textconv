@@ -1,1 +1,10 @@
 /build/
+/debian/.debhelper/generated/
+/debian/debhelper-build-stamp
+/debian/files
+/debian/drawio-textconv/
+/debian/drawio-textconv.*.debhelper
+/debian/drawio-textconv.substvars
+/debian/tmp/
+/.pc/
+*.log

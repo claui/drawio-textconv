@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "davidanson.vscode-markdownlint",
+    "dawidd6.debian-vscode",
     "editorconfig.editorconfig",
     "timonwong.shellcheck"
   ]
